@@ -23,14 +23,17 @@ body {
     vertical-align: middle;
 }
 
-.text-vertical-center h1 {
+.text-vertical-center h1{
     font-size: 4.5em;
     font-weight: 700;
     margin: 0;
     padding: 0;
+    color: #403d33;
 }
 
-
+.text-vertical-center h3{
+    color: #403d33;
+}
 /* Custom Button Styles */
 
 .btn-dark {
@@ -234,6 +237,9 @@ hr.small {
     margin: 10px;
 }
 
+.bg-colour{
+    background-color: #720b45;
+}
 
 /* Map */
 
@@ -262,7 +268,7 @@ footer {
     font-size: 1em;
     position: fixed;
     right: 5px;
-    bottom: 5px;
+    bottom: 30px;
     display: none;
     padding: 15px 20px;
 }
