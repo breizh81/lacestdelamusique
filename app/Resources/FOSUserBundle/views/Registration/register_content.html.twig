@@ -1,0 +1,42 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="login-form">
+    <h1>Bienvenue</h1>
+    {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'login-form fos_user_registration_register'}}) }}
+
+    <span class="alert">{{ form_errors(form) }}</span>
+
+    <span class="alert">{{ form_errors(form.email) }}</span>
+    <div class="form-group">
+        {{ form_widget(form.email, {'attr': {'class': 'form-control', 'required': 'required', 'placeholder': 'email'}}) }}
+        <i class="fa fa-user"></i>
+    </div>
+
+    <span class="alert">{{ form_errors(form.username) }}</span>
+    <div class="form-group">
+        {{ form_widget(form.username, {'attr': {'class': 'form-control', 'required': 'required', 'placeholder': 'username'}}) }}
+        <i class="fa fa-user"></i>
+    </div>
+
+    <span class="alert">{{ form_errors(form.plainPassword.first) }}</span>
+    <div class="form-group">
+        {{ form_widget(form.plainPassword.first, {'attr': {'class': 'form-control', 'required': 'required', 'placeholder': 'first password'}}) }}
+        <i class="fa fa-user"></i>
+    </div>
+
+    <span class="alert">{{ form_errors(form.plainPassword.second) }}</span>
+    <div class="form-group">
+        {{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control', 'required': 'required', 'placeholder': 'second password'}}) }}
+        <i class="fa fa-user"></i>
+    </div>
+
+    <input class="log-btn" type="submit" value="{{ 'registration.submit'|trans }}"/>
+    {{ form_end(form) }}
+
+    <form action="{{ path("fos_user_security_check") }}" method="post">
+
+
+    </form>
+
+
+</div>

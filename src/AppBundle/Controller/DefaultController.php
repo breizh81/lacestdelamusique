@@ -19,7 +19,7 @@ class DefaultController extends Controller
         ]);
     }
     /**
-     * @Route("/login", name="connexion")
+     * @Route("/loginj", name="connexion")
      */
     public function loginAction(Request $request)
     {
