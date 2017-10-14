@@ -1,0 +1,63 @@
+{% extends '@App/base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/app/Default/css/sequence.css') }}" rel="stylesheet">
+
+{% endblock %}
+
+{% block title %}Titre de la séquence{% endblock %}
+
+{% block content %}
+    <!-- Callout -->
+    <aside class="callout"><!--la photo sera defini dans le backend de la séquence -->
+        <div class="text-vertical-center">
+            <h1>Titre de la séquence</h1>
+            <hr class="small">
+        </div>
+    </aside>
+    <section id="portfolio" class="portfolio">
+        <div>
+            resumé de la séquence.
+        </div>
+    </section>
+<!--il y aura un foreach pour afficher toutes les seances d'une sequences -->
+    <!-- Callout -->
+    <aside class="analyse"><!--la photo sera defini dans le backend de la séquence -->
+        <div class="text-vertical-center">
+            <h1>Ecoute & analyse</h1>
+            <hr class="small">
+        </div>
+    </aside>
+    <section id="portfolio" class="portfolio">
+    </section>
+    <!-- Callout -->
+    <aside class="projet"><!--la photo sera defini dans le backend de la séquence -->
+        <div class="text-vertical-center">
+            <h1>Projet musicale</h1>
+            <hr class="small">
+        </div>
+    </aside>
+    <section id="portfolio" class="portfolio">
+    </section>
+    <!-- Callout -->
+    <aside class="histoire_des_arts"><!--la photo sera defini dans le backend de la séquence -->
+        <div class="text-vertical-center">
+            <h1>Histoire des arts</h1>
+            <hr class="small">
+        </div>
+    </aside>
+    <section id="portfolio" class="portfolio">
+    </section>
+    <!-- Callout -->
+    <aside class="activites"><!--la photo sera défini dans le backend de la séquence -->
+        <div class="text-vertical-center">
+            <hr class="small">
+        </div>
+    </aside>
+    <section id="portfolio" class="portfolio">
+    </section>
+
+<button class="question btn btn-lg">Poser une question</button>
+
+{% endblock %}

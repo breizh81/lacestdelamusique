@@ -212,6 +212,7 @@ hr.small {
 
 .portfolio {
     padding: 50px 0;
+    background-color: #e1d5c8;
 }
 
 .portfolio-item {
@@ -230,7 +231,7 @@ hr.small {
 /* Call to Action */
 
 .call-to-action {
-    padding: 50px 0;
+    padding: 30px 0;
 }
 
 .call-to-action .btn {
@@ -261,7 +262,8 @@ hr.small {
 /* Footer */
 
 footer {
-    padding: 100px 0;
+    /*padding: 100px 0;*/
+    /*padding-bottom: 30px;*/
 }
 
 #to-top {
