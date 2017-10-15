@@ -17,31 +17,18 @@ class CategorieFixtures extends Fixture
 {
 public function load(ObjectManager $manager)
 {
-    for($i=0;$i<4;$i++){
-        switch ($i){
-            case 0:
-                $categorie = new Categorie();
-                $categorie->setCategorie('Ecoute & analyse');
-                $manager->persist($categorie);
-                break;
-            case 1:
-                $categorie = new Categorie();
-                $categorie->setCategorie('Projet musical');
-                $manager->persist($categorie);
-                break;
-            case 2:
-                $categorie = new Categorie();
-                $categorie->setCategorie('Histoire des arts');
-                $manager->persist($categorie);
-                break;
-            case 3:
-                $categorie = new Categorie();
-                $categorie->setCategorie('Activités');
-                $manager->persist($categorie);
+    $categories = ['Ecoute & analyse',
+        'Projet musical',
+        'Histoire des arts',
+        'Activités'
+        ];
 
-                break;
-        }
+    foreach ($categories as $category){
+        $categorie = new Categorie();
+        $categorie->setCategorie($category);
+        $manager->persist($categorie);
     }
+
     $manager->flush();
 }
 }

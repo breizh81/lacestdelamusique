@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -12,6 +13,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Sequence
 {
+    public function __construct()
+    {
+        $this->categories = new ArrayCollection();
+    }
+
     /**
      * @var int
      *
@@ -42,6 +48,10 @@ class Sequence
      */
     private $comment;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Categorie",cascade={"persist"})
+     */
+    private $categories;
 
     /**
      * Get id
@@ -123,6 +133,25 @@ class Sequence
     public function getComment()
     {
         return $this->comment;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
+
+
+    public function addCategorie(Categorie $categorie)
+    {
+        $this->categories[] = $categorie;
+    }
+
+    public function removeCategorie($categorie)
+    {
+        $this->categories->removeElement($categorie);
     }
 }
 
