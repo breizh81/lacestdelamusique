@@ -1,7 +1,6 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<div class="login-form">
-    <h1>Bienvenue</h1>
+    <h1>{{ 'wellcome' | trans }}</h1>
     <form action="{{ path("fos_user_security_check") }}" method="post">
 
         {% if csrf_token %}
@@ -27,5 +26,3 @@
 
     </form>
 
-
-</div>
