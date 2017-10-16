@@ -33,9 +33,12 @@ class DefaultController extends Controller
      */
     public function listeSequencesAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $sequences = $em->getRepository('AppBundle:Sequence')->findAll();
         // replace this example code with whatever you need
         return $this->render('@App/liste-sequences.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
+            'sequences' => $sequences,
         ]);
     }
     /**
