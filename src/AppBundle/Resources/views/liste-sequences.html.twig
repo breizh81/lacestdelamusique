@@ -8,40 +8,18 @@
 {% endblock %}
 
 {% block content %}
-
     <div>
         <ul>
-            <li>
-                <a href="{{ path('sequence') }}">
-                <img class="img-responsive" src="{{ asset('bundles/app/Default/img/seq1.jpg') }}" />
-                <h3>Headline</h3>
-                <p>Lorem ipsum dolor sit amet...</p>
-                </a>
-            </li>
+{% for sequence in sequences %}
+    <li>
+        <a href="{{ path('sequence') }}">
+            <img class="img-responsive" src="{{ asset('bundles/app/Default/img/seq2.jpg') }}" />
+            <h3>{{ sequence.title }}</h3>
+            <p>{{ sequence.summary }}</p>
+        </a>
+    </li>
+    {% endfor %}
 
-            <li>
-                <a href="{{ path('sequence') }}">
-                <img class="img-responsive" src="{{ asset('bundles/app/Default/img/seq2.jpg') }}" />
-                <h3>Headline</h3>
-                <p>Lorem ipsum dolor sit amet...</p>
-                </a>
-            </li>
-
-            <li>
-                <a href="{{ path('sequence') }}">
-                <img class="img-responsive" src="{{ asset('bundles/app/Default/img/seq3.jpg') }}" />
-                <h3>Headline</h3>
-                <p>Lorem ipsum dolor sit amet...</p>
-                </a>
-            </li>
-
-            <li>
-                <a href="{{ path('sequence') }}">
-                <img class="img-responsive" src="{{ asset('bundles/app/Default/img/seq4.jpg') }}" />
-                <h3>Headline</h3>
-                <p>Lorem ipsum dolor sit amet...</p>
-                </a>
-            </li>
         </ul>
     </div>
 {% endblock %}

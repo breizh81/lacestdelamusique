@@ -54,6 +54,12 @@ class Sequence
     private $categories;
 
     /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Niveau")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $niveau;
+
+    /**
      * Get id
      *
      * @return int
@@ -153,5 +159,23 @@ class Sequence
     {
         $this->categories->removeElement($categorie);
     }
+
+    /**
+     * @return mixed
+     */
+    public function getNiveau()
+    {
+        return $this->niveau;
+    }
+
+
+    public function setNiveau(Niveau $niveau)
+    {
+        $this->niveau = $niveau;
+
+        return $this;
+    }
+
+
 }
 
