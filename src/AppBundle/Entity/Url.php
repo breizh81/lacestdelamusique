@@ -28,6 +28,17 @@ class Url
      */
     private $url;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", length=36)
+     */
+    private $type;
+
+    public static function __callStatic($name, $arguments)
+    {
+        // TODO: Implement __callStatic() method.
+    }
 
     /**
      * Get id
@@ -62,5 +73,22 @@ class Url
     {
         return $this->url;
     }
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
+
 }
 
