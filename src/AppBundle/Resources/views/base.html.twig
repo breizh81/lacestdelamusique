@@ -40,13 +40,15 @@
             <i class="fa fa-times"></i>
         </a>
         <li class="sidebar-brand">
-            <a class="js-scroll-trigger" href="#top">Là c'est de la musique</a>
+            {#current route#}
+            <a class="js-scroll-trigger" href="{{ path(app.request.attributes.get('_route'))}}">Là c'est de la musique</a>
         </li>
         <li>
-            <a class="js-scroll-trigger" href="#top">Home</a>
+            <a class="js-scroll-trigger" href="{{ path('homepage') }}">{{ 'home' | trans }}</a>
         </li>
+
         <li>
-            <a class="js-scroll-trigger" href="#about">About</a>
+            <a class="js-scroll-trigger" href="#about">{{ 'about' | trans }}</a>
         </li>
         <li>
             <a class="js-scroll-trigger" href="#services">Services</a>
@@ -55,8 +57,20 @@
             <a class="js-scroll-trigger" href="#portfolio">Portfolio</a>
         </li>
         <li>
-            <a class="js-scroll-trigger" href="#contact" onclick=$( "#menu-close").click();>Contact</a>
+            <a class="js-scroll-trigger" href="#contact">Contact</a>
         </li>
+
+        {% if app.user %}
+            <li>
+                <a class="js-scroll-trigger" href="{{ path('fos_user_security_logout') }}")>{{ 'logout' | trans }}</a>
+            </li>
+        {% else %}
+            <li>
+                <a class="js-scroll-trigger" href="{{ path('fos_user_security_login') }}")>{{ 'login' | trans }}</a>
+            </li>
+        {% endif %}
+
+
     </ul>
 </nav>
 {% block content %}

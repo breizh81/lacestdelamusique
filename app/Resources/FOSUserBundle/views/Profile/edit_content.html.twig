@@ -1,0 +1,35 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+
+{% if(form_errors(form)) %}
+    <span class="alert">{{ form_errors(form) }}</span>
+{% endif %}
+
+<div class="form-group">
+    {{ form_widget(form.username, {'attr': {'class': 'form-control', 'required': 'required', 'placeholder': 'form.username' | trans}}) }}
+    <i class="fa fa-user"></i>
+    {% if(form_errors(form.username)) %}
+        <span class="alert">{{ form_errors(form.username) }}</span>
+    {% endif %}
+</div>
+
+<div class="form-group">
+    {{ form_widget(form.email, {'attr': {'class': 'form-control', 'required': 'required', 'placeholder': 'form.email' | trans}}) }}
+    <i class="fa fa-user"></i>
+    {% if(form_errors(form.email)) %}
+        <span class="alert">{{ form_errors(form.email) }}</span>
+    {% endif %}
+</div>
+
+<div class="form-group">
+    {{ form_widget(form.current_password, {'attr': {'class': 'form-control', 'required': 'required', 'placeholder': 'form.current_password' | trans}}) }}
+    <i class="fa fa-user"></i>
+    {% if(form_errors(form.current_password)) %}
+        <span class="alert">{{ form_errors(form.current_password) }}</span>
+    {% endif %}
+</div>
+
+<input class="log-btn" type="submit" value="{{ 'profile.edit.submit'|trans }}"/>
+{{ form_end(form) }}
+
