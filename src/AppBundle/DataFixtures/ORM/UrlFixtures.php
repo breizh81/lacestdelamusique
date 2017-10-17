@@ -17,15 +17,16 @@ class UrlFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        $urls = ['https://www.youtube.com/watch?v=Ycg5oOSdpPQ',
-            'https://youtu.be/VLPRQUbhIT0',
-            'https://www.youtube.com/watch?v=DLlF2FMv968',
-            'https://www.youtube.com/watch?v=uelHwf8o7_U'
+        $urls = [['url'=>'https://www.youtube.com/watch?v=Ycg5oOSdpPQ','type'=>'youtube'],
+            ['url'=>'https://youtu.be/VLPRQUbhIT0','type'=>'youtube'],
+            ['url'=>'https://www.youtube.com/watch?v=DLlF2FMv968','type'=>'youtube'],
+            ['url'=>'https://www.youtube.com/watch?v=uelHwf8o7_U','type'=>'youtube']
             ];
         foreach ($urls as $url)
         {
             $lien = new Url();
-            $lien->setUrl($url);
+            $lien->setUrl($url['url']);
+            $lien->setType($url['type']);
             $manager->persist($lien);
         }
 
