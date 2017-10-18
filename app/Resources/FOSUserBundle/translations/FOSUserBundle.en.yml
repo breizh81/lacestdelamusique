@@ -92,3 +92,4 @@ form:
     new_password_confirmation: 'Repeat new password'
 
 wellcome: Wellcome
+lost_your_password: Lost your password ?
