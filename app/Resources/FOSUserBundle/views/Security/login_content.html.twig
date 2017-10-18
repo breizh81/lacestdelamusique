@@ -1,5 +1,6 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
+
     <h1>{{ 'wellcome' | trans }}</h1>
     <form action="{{ path("fos_user_security_check") }}" method="post">
 
@@ -19,9 +20,13 @@
         {% if error %}
             <span class="alert">{{ error.messageKey|trans(error.messageData, 'security') }}</span>
         {% endif %}
-        <div><input type="checkbox" id="remember_me" name="_remember_me" value="on" /><label class="remember" for="remember_me">{{ 'security.login.remember_me'|trans }}</label></div>
 
-        <div><a class="link" href="#">Lost your password?</a></div>
+        <div>
+            <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+            <label class="remember" for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+        </div>
+
+        <div><a class="link" href="#">{{ 'lost_your_password' | trans }}</a></div>
         <input class="log-btn" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
 
     </form>

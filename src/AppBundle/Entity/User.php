@@ -19,9 +19,40 @@ class User extends BaseUser
      */
     protected $id;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Niveau")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $niveau;
+
+
     public function __construct()
     {
         parent::__construct();
         // your own logic
+    }
+
+    /**
+     * Set niveau
+     *
+     * @param \AppBundle\Entity\Niveau $niveau
+     *
+     * @return User
+     */
+    public function setNiveau(Niveau $niveau)
+    {
+        $this->niveau = $niveau;
+
+        return $this;
+    }
+
+    /**
+     * Get niveau
+     *
+     * @return \AppBundle\Entity\Niveau
+     */
+    public function getNiveau()
+    {
+        return $this->niveau;
     }
 }

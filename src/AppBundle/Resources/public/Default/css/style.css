@@ -89,6 +89,18 @@ h1 {
     border-radius: 4px;
 }
 
+.remember {
+    text-decoration: none;
+    color: #C6C6C6;
+    float: right;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+.remember:hover {
+    text-decoration: underline;
+    color: #8C918F;
+}
+
 .link {
     text-decoration: none;
     color: #C6C6C6;
