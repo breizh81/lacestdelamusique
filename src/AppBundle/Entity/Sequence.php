@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpKernel\Tests\Controller\ArgumentResolverTest;
 
 /**
  * Sequence
@@ -16,6 +17,7 @@ class Sequence
     public function __construct()
     {
         $this->categories = new ArrayCollection();
+        $this->url = new ArrayCollection();
     }
 
     /**
@@ -54,10 +56,20 @@ class Sequence
     private $categories;
 
     /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Url",cascade={"persist"})
+     */
+    private $urls;
+    /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Niveau")
      * @ORM\JoinColumn(nullable=false)
      */
     private $niveau;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Etablissement")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $etablissement;
 
     /**
      * Get id
@@ -153,11 +165,33 @@ class Sequence
     public function addCategorie(Categorie $categorie)
     {
         $this->categories[] = $categorie;
+        $categorie->setCategorie($this);
+        return $this;
     }
 
     public function removeCategorie($categorie)
     {
         $this->categories->removeElement($categorie);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUrls()
+    {
+        return $this->urls;
+    }
+
+    public function addUrl(Url $url)
+    {
+        $this->urls[] = $rl;
+        $url->setUrl($this);
+        return $this;
+    }
+
+    public function removeUrl($url)
+    {
+        $this->urls->removeElement($url);
     }
 
     /**
@@ -174,6 +208,22 @@ class Sequence
         $this->niveau = $niveau;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEtablissement()
+    {
+        return $this->etablissement;
+    }
+
+    /**
+     * @param mixed $etablissement
+     */
+    public function setEtablissement($etablissement)
+    {
+        $this->etablissement = $etablissement;
     }
 
 

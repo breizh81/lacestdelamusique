@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -12,6 +13,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Etablissement
 {
+    public function __construct()
+    {
+        $this->users = new ArrayCollection();
+    }
+
     /**
      * @var int
      *
@@ -28,6 +34,10 @@ class Etablissement
      */
     private $libelle;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\User" , mappedBy="etablissements")
+     */
+    private $users;
 
     /**
      * Get id

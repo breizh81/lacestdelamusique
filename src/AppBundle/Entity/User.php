@@ -3,6 +3,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -22,6 +23,11 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
-        // your own logic
+        $this->etablissements = new ArrayCollection();
     }
+    /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Etablissement",inversedBy="users")
+     *
+     */
+    private $etablissements;
 }
