@@ -17,7 +17,7 @@ class Sequence
     public function __construct()
     {
         $this->categories = new ArrayCollection();
-        $this->url = new ArrayCollection();
+        $this->urls = new ArrayCollection();
     }
 
     /**
@@ -56,7 +56,7 @@ class Sequence
     private $categories;
 
     /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Url",cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Url",cascade={"persist"},mappedBy="sequences")
      */
     private $urls;
     /**
@@ -184,7 +184,7 @@ class Sequence
 
     public function addUrl(Url $url)
     {
-        $this->urls[] = $rl;
+        $this->urls[] = $url;
         $url->setUrl($this);
         return $this;
     }

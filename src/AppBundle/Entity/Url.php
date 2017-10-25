@@ -12,6 +12,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Url
 {
+
+    public function __construct()
+    {
+
+        $this->sequences = new ArrayCollection();
+    }
     /**
      * @var int
      *
@@ -34,6 +40,11 @@ class Url
      * @ORM\Column(name="type", type="string", length=36)
      */
     private $type;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Sequence",inversedBy="urls")
+     */
+    private $sequences;
 
     public static function __callStatic($name, $arguments)
     {
@@ -88,6 +99,26 @@ class Url
     public function setType($type)
     {
         $this->type = $type;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSequences()
+    {
+        return $this->sequences;
+    }
+
+    public function addUrl(Sequence $sequence)
+    {
+        $this->sequences[] = $sequence;
+        $sequence->setSequence($this);
+        return $this;
+    }
+
+    public function removeSequence($sequence)
+    {
+        $this->sequences->removeElement($sequence);
     }
 
 }
