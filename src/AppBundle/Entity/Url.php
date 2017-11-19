@@ -2,8 +2,8 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Url
  *
@@ -109,10 +109,10 @@ class Url
         return $this->sequences;
     }
 
-    public function addUrl(Sequence $sequence)
+    public function addSequence(Sequence $sequence)
     {
         $this->sequences[] = $sequence;
-        $sequence->setSequence($this);
+        $sequence->getTitle($this);
         return $this;
     }
 
