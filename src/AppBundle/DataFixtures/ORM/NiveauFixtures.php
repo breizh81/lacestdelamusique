@@ -24,7 +24,8 @@ public function load(ObjectManager $manager)
         "3ème",
         "3ème CHAM",
         "4ème CHAM",
-        "Chorale"];
+        "Chorale",
+        "0"];
     $i=0;
     foreach ($niveaux as $niveau)
     {

@@ -72,5 +72,25 @@ class Etablissement
     {
         return $this->libelle;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getUsers()
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user)
+    {
+        $this->users[] = $user;
+        $user->addEtablissement($user);
+        return $this;
+    }
+
+    public function removeUser($user)
+    {
+        $this->users->removeElement($user);
+    }
 }
 

@@ -159,15 +159,31 @@ Donec nec felis arcu. In sed malesuada felis, id gravida sapien. Proin faucibus 
 Donec nec felis arcu. In sed malesuada felis, id gravida sapien. Proin faucibus nisl sit amet orci imperdiet hendrerit at eu libero. Sed blandit nulla vitae pretium gravida. Quisque vel arcu ut risus rutrum imperdiet id ac nunc. Suspendisse cursus lacus vel urna tincidunt convallis. Morbi in nunc elit. Cras a fermentum ipsum. Donec pellentesque ante nec ante lacinia eleifend ut bibendum nulla.",
         "Comment"=>"Vestibulum vel erat magna. Sed consequat bibendum dolor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus quis odio id eros semper fringilla eget ac eros. Curabitur ut placerat ligula. Integer pulvinar est posuere diam luctus elementum. Fusce nec lorem finibus, auctor dui at, convallis dolor. Sed in congue dolor.",
         "Niveau"=>6]];
+$i=1;
 foreach ($sequences as $sequence) {
     $section = new Sequence();
     $section->setTitle($sequence['title']);
     $section->setSummary($sequence['Summary']);
     $section->setComment($sequence['Comment']);
     $section->setNiveau($this->getReference("level".$sequence["Niveau"]));
+    $section->setEtablissement($this->getReference("etabl".$i));
+    $section->addUrl($this->getReference("url".$i));
     $manager->persist($section);
+
+
+    if($i===2)
+        $i=0;
+    else
+        $i++;
 }
 
         $manager->flush();
+    }
+
+    public function getDependencies()
+    {
+        return array(
+            UrlFixtures::class,
+        );
     }
 }

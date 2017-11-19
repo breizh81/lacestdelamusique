@@ -30,4 +30,46 @@ class User extends BaseUser
      *
      */
     private $etablissements;
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Niveau")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $niveau;
+    /**
+     * @return mixed
+     */
+    public function getEtablissements()
+    {
+        return $this->etablissements;
+    }
+
+
+    public function addEtablissement(Etablissement $etablissement)
+    {
+        $this->etablissements[] = $etablissement;
+        $etablissement->getLibelle($etablissement);
+        return $this;
+    }
+
+    public function removeEtablissement($etablissement)
+    {
+        $this->etablissements->removeElement($etablissement);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNiveau()
+    {
+        return $this->niveau;
+    }
+
+    /**
+     * @param mixed $niveau
+     */
+    public function setNiveau($niveau)
+    {
+        $this->niveau = $niveau;
+    }
+
 }
