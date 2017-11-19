@@ -47,7 +47,6 @@ class User extends BaseUser
     public function addEtablissement(Etablissement $etablissement)
     {
         $this->etablissements[] = $etablissement;
-        $etablissement->getLibelle($etablissement);
         return $this;
     }
 
