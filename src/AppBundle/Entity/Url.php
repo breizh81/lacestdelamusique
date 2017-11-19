@@ -2,7 +2,6 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 /**
  * Url
@@ -13,11 +12,6 @@ use Doctrine\ORM\Mapping as ORM;
 class Url
 {
 
-    public function __construct()
-    {
-
-        $this->sequences = new ArrayCollection();
-    }
     /**
      * @var int
      *
@@ -40,16 +34,6 @@ class Url
      * @ORM\Column(name="type", type="string", length=36)
      */
     private $type;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Sequence",inversedBy="urls")
-     */
-    private $sequences;
-
-    public static function __callStatic($name, $arguments)
-    {
-        // TODO: Implement __callStatic() method.
-    }
 
     /**
      * Get id
@@ -100,26 +84,5 @@ class Url
     {
         $this->type = $type;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getSequences()
-    {
-        return $this->sequences;
-    }
-
-    public function addSequence(Sequence $sequence)
-    {
-        $this->sequences[] = $sequence;
-        $sequence->getTitle($this);
-        return $this;
-    }
-
-    public function removeSequence($sequence)
-    {
-        $this->sequences->removeElement($sequence);
-    }
-
 }
 
