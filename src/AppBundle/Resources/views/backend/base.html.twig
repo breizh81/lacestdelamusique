@@ -142,16 +142,20 @@
                         <!-- /input-group -->
                     </li>
                     <li>
-                        <a href="index.html.twig" class="active"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        <a href="{{ path('backend') }}" {% if(app.request.get('_route') == 'backend') %} class="active" {% endif %}>
+                            <i class="fa fa-dashboard fa-fw"></i> Dashboard
+                        </a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-book fa-fw"></i> Devoirs<span class="fa arrow"></span></a>
+                        <a href="#" {% if(app.request.get('_route') == 'backend_devoir_index') %} class="active" {% endif %}>
+                            <i class="fa fa-book fa-fw"></i> Devoirs<span class="fa arrow"></span>
+                        </a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#">Créer un devoir</a>
+                                <a href="{{ path('backend_devoir_new') }}">Créer un devoir</a>
                             </li>
                             <li>
-                                <a href="#">Consulter les devoirs</a>
+                                <a href="{{ path('backend_devoir_index') }}">Consulter les devoirs</a>
                             </li>
                         </ul>
                     </li>
@@ -251,11 +255,6 @@
 
     <!-- Metis Menu Plugin JavaScript -->
     <script src="{{ asset('bundles/app/Backend/js/metisMenu.min.js') }}"></script>
-
-    <!-- Morris Charts JavaScript -->
-    <script src="{{ asset('bundles/app/Backend/js/raphael.min.js') }}"></script>
-    <script src="{{ asset('bundles/app/Backend/js/morris.min.js') }}"></script>
-    <script src="{{ asset('bundles/app/Backend/js/morris-data.js') }}"></script>
 
     <!-- Custom Theme JavaScript -->
     <script src="{{ asset('bundles/app/Backend/js/startmin.js') }}"></script>

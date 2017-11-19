@@ -1,0 +1,53 @@
+{% extends '@App/backend/base.html.twig' %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Liste des devoirs</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <table>
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Libelle</th>
+                    <th>Validationautomatique</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for devoir in devoirs %}
+                    <tr>
+                        <td><a href="{{ path('backend_devoir_show', { 'id': devoir.id }) }}">{{ devoir.id }}</a></td>
+                        <td>{{ devoir.libelle }}</td>
+                        <td>{% if devoir.validationAutomatique %}Yes{% else %}No{% endif %}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('backend_devoir_show', { 'id': devoir.id }) }}">show</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('backend_devoir_edit', { 'id': devoir.id }) }}">edit</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <ul>
+                <li>
+                    <a href="{{ path('backend_devoir_new') }}">Create a new devoir</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+{% endblock %}

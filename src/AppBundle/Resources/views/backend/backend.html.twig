@@ -602,3 +602,11 @@
         <!-- /.col-lg-4 -->
     </div>
 {% endblock %}
+
+{% block footerscripts %}
+    {{ parent() }}
+    <!-- Morris Charts JavaScript -->
+    <script src="{{ asset('bundles/app/Backend/js/raphael.min.js') }}"></script>
+    <script src="{{ asset('bundles/app/Backend/js/morris.min.js') }}"></script>
+    <script src="{{ asset('bundles/app/Backend/js/morris-data.js') }}"></script>
+{% endblock %}
