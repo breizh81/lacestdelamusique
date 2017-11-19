@@ -16,27 +16,26 @@ use Twig\Node\Node;
 
 class NiveauFixtures extends Fixture
 {
-public function load(ObjectManager $manager)
-{
-    $niveaux = ["6ème",
-        "5ème",
-        "4ème",
-        "3ème",
-        "3ème CHAM",
-        "4ème CHAM",
-        "Chorale",
-        "0"];
-    $i=0;
-    foreach ($niveaux as $niveau)
+    public function load(ObjectManager $manager)
     {
-        $level = new Niveau();
-        $level->setLibelle($niveau);
-        $manager->persist($level);
-        // other fixtures can get this object using the 'admin-user' name
-        $this->addReference('level'.$i, $level);
-        $i++;
-    }
+        $niveaux = ["6ème",
+            "5ème",
+            "4ème",
+            "3ème",
+            "3ème CHAM",
+            "4ème CHAM",
+            "Chorale",
+            "0"];
+        $i = 0;
+        foreach ($niveaux as $niveau) {
+            $level = new Niveau();
+            $level->setLibelle($niveau);
+            $manager->persist($level);
+            // other fixtures can get this object using the 'admin-user' name
+            $this->addReference('level' . $i, $level);
+            $i++;
+        }
 
-    $manager->flush();
-}
+        $manager->flush();
+    }
 }

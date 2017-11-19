@@ -14,11 +14,6 @@ use Symfony\Component\HttpKernel\Tests\Controller\ArgumentResolverTest;
  */
 class Sequence
 {
-    public function __construct()
-    {
-        $this->categories = new ArrayCollection();
-        $this->urls = new ArrayCollection();
-    }
 
     /**
      * @var int
@@ -56,9 +51,10 @@ class Sequence
     private $categories;
 
     /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Url",cascade={"persist"},mappedBy="sequences")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Url", cascade={"persist"})
      */
     private $urls;
+
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Niveau")
      * @ORM\JoinColumn(nullable=false)
@@ -70,6 +66,12 @@ class Sequence
      * @ORM\JoinColumn(nullable=false)
      */
     private $etablissement;
+
+    public function __construct()
+    {
+        $this->categories = new ArrayCollection();
+        $this->urls = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -185,11 +187,10 @@ class Sequence
     public function addUrl(Url $url)
     {
         $this->urls[] = $url;
-        $url->setUrl($this);
         return $this;
     }
 
-    public function removeUrl($url)
+    public function removeUrl(Url $url)
     {
         $this->urls->removeElement($url);
     }
