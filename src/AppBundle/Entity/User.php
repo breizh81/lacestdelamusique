@@ -23,52 +23,52 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
-        $this->etablissements = new ArrayCollection();
+        $this->institutions = new ArrayCollection();
     }
     /**
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Etablissement",inversedBy="users")
      *
      */
-    private $etablissements;
+    private $institutions;
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Niveau")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $niveau;
+    private $level;
     /**
      * @return mixed
      */
-    public function getEtablissements()
+    public function getInstitutions()
     {
-        return $this->etablissements;
+        return $this->institutions;
     }
 
 
-    public function addEtablissement(Etablissement $etablissement)
+    public function addInstitution(Etablissement $institution)
     {
-        $this->etablissements[] = $etablissement;
+        $this->institutions[] = $institution;
         return $this;
     }
 
-    public function removeEtablissement($etablissement)
+    public function removeInstitution($institution)
     {
-        $this->etablissements->removeElement($etablissement);
+        $this->institutions->removeElement($institution);
     }
 
     /**
      * @return mixed
      */
-    public function getNiveau()
+    public function getLevel()
     {
-        return $this->niveau;
+        return $this->level;
     }
 
     /**
-     * @param mixed $niveau
+     * @param mixed $level
      */
-    public function setNiveau($niveau)
+    public function setLevel($level)
     {
-        $this->niveau = $niveau;
+        $this->level = $level;
     }
 
 }

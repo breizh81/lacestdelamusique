@@ -18,10 +18,10 @@ class UrlFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $urls = [
-            ['url' => 'https://www.youtube.com/watch?v=Ycg5oOSdpPQ', 'type' => 'youtube'],
-            ['url' => 'https://you.tube/VLPRQUbhIT0', 'type' => 'youtube'],
-            ['url' => 'https://www.youtube.com/watch?v=DLlF2FMv968', 'type' => 'youtube'],
-            ['url' => 'https://www.youtube.com/watch?v=uelHwf8o7_U', 'type' => 'youtube']
+            ['url' => 'https://www.youtube.com/watch?v=Ycg5oOSdpPQ','label'=>'Ofenbach vs. Nick Waterhouse - Katchi', 'type' => 'youtube'],
+            ['url' => 'https://www.youtube.com/watch?v=VLPRQUbhIT0','label'=>'SOPRANO - HIRO FEAT. INDILA',  'type' => 'youtube'],
+            ['url' => 'https://www.youtube.com/watch?v=DLlF2FMv968','label' =>'Numb/Encore [Live] - Linkin Park & Jay Z','type' => 'youtube'],
+            ['url' => 'https://www.youtube.com/watch?v=uelHwf8o7_U','label'=>'Eminem - Love The Way You Lie ft. Rihanna', 'type' => 'youtube']
         ];
 
         $i = 0;
@@ -29,6 +29,7 @@ class UrlFixtures extends Fixture
             $lien = new Url();
             $lien->setUrl($url['url']);
             $lien->setType($url['type']);
+            $lien->setLabel($url['label']);
             $manager->persist($lien);
             $this->addReference('url' . $i, $lien);
 

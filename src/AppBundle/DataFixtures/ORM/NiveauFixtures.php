@@ -29,7 +29,7 @@ class NiveauFixtures extends Fixture
         $i = 0;
         foreach ($niveaux as $niveau) {
             $level = new Niveau();
-            $level->setLibelle($niveau);
+            $level->setLabel($niveau);
             $manager->persist($level);
             // other fixtures can get this object using the 'admin-user' name
             $this->addReference('level' . $i, $level);

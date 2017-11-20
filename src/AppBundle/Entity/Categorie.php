@@ -24,11 +24,13 @@ class Categorie
     /**
      * @var string
      *
-     * @ORM\Column(name="categorie", type="string", length=32)
+     * @ORM\Column(name="label", type="string", length=32)
      */
-    private $categorie;
+    private $label;
 
-
+    public function __toString() {
+        return $this->label;
+    }
     /**
      * Get id
      *
@@ -40,27 +42,27 @@ class Categorie
     }
 
     /**
-     * Set categorie
+     * Set label
      *
-     * @param string $categorie
+     * @param string $label
      *
      * @return Categorie
      */
-    public function setCategorie($categorie)
+    public function setLabel($label)
     {
-        $this->categorie = $categorie;
+        $this->label = $label;
 
         return $this;
     }
 
     /**
-     * Get categorie
+     * Get label
      *
      * @return string
      */
-    public function getCategorie()
+    public function getLabel()
     {
-        return $this->categorie;
+        return $this->label;
     }
 }
 
