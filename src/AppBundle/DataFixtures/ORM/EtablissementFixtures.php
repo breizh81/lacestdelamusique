@@ -23,7 +23,7 @@ public function load(ObjectManager $manager)
     $i=0;
     foreach ($etablissements as $etablissement){
         $etabl = new Etablissement();
-        $etabl->setLibelle($etablissement);
+        $etabl->setLabel($etablissement);
         $manager->persist($etabl);
         $this->addReference('etabl'.$i, $etabl);
         $i++;

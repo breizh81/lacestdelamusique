@@ -1,4 +1,11 @@
 home: Accueil
-about: A propos
+about: 'A propos'
 login: Connexion
-logout: Se déconnecter
+logout: 'Se déconnecter'
+title: titre
+summary: Résume
+comment: commentaire
+'Edit sequence': 'Editer la séquence'
+Edit: 'Editer'
+'Back to the list': 'Retour à la liste'
+Delete: Supprimer

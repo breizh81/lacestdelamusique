@@ -59,13 +59,13 @@ class Sequence
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Niveau")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $niveau;
+    private $level;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Etablissement")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $etablissement;
+    private $institution;
 
     public function __construct()
     {
@@ -164,16 +164,16 @@ class Sequence
     }
 
 
-    public function addCategorie(Categorie $categorie)
+    public function addCategory(Categorie $category)
     {
-        $this->categories[] = $categorie;
-        $categorie->setCategorie($this);
+        $this->categories[] = $category;
+
         return $this;
     }
 
-    public function removeCategorie($categorie)
+    public function removeCategory(Categorie $category)
     {
-        $this->categories->removeElement($categorie);
+        $this->categories->removeElement($category);
     }
 
     /**
@@ -198,15 +198,15 @@ class Sequence
     /**
      * @return mixed
      */
-    public function getNiveau()
+    public function getLevel()
     {
-        return $this->niveau;
+        return $this->level;
     }
 
 
-    public function setNiveau(Niveau $niveau)
+    public function setLevel(Niveau $level)
     {
-        $this->niveau = $niveau;
+        $this->level = $level;
 
         return $this;
     }
@@ -214,17 +214,17 @@ class Sequence
     /**
      * @return mixed
      */
-    public function getEtablissement()
+    public function getInstitution()
     {
-        return $this->etablissement;
+        return $this->institution;
     }
 
     /**
-     * @param mixed $etablissement
+     * @param mixed $institution
      */
-    public function setEtablissement($etablissement)
+    public function setInstitution($institution)
     {
-        $this->etablissement = $etablissement;
+        $this->institution = $institution;
     }
 
 
