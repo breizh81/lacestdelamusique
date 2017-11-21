@@ -1,4 +1,22 @@
 home: Accueil
-about: A propos
+about: 'A propos'
 login: Connexion
-logout: Se déconnecter
+logout: 'Se déconnecter'
+'yes': Oui
+'no': Non
+'homework''s list': 'Liste des devoirs'
+title: Titre
+'automatic validation': 'Validation automatique'
+automaticValidation: 'Validation automatique'
+actions: Actions
+show: Voir
+edit: Editer
+delete: Supprimer
+'create a new homework': 'Créer un nouveau devoir'
+'show homeworks': 'Consulter les devoirs'
+create: Créer
+'back to the list': 'Retourner à la liste'
+'homework creation': 'Création d''un devoir'
+label: Libellé
+save: Enregistrer
+modification: Modification

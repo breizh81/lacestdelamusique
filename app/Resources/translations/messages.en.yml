@@ -1,3 +1,22 @@
 home: Home
 about: About
-login: Log out
+login: 'Log in'
+logout: 'Log out'
+'yes': 'Yes'
+'no': 'No'
+'homework''s list': 'Homework''s list'
+title: Title
+'automatic validation': 'Automatic validation'
+automaticValidation: 'Automatic validation'
+actions: Actions
+show: Show
+edit: Edit
+delete: Delete
+'create a new homework': 'Create a new homework'
+'show homeworks': 'Show homeworks'
+create: Create
+'back to the list': 'Back to the list'
+'homework creation': 'Homework creation'
+label: Label
+save: Save
+modification: Modification

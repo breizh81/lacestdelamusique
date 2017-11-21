@@ -25,9 +25,9 @@ class Question
     /**
      * @var string
      *
-     * @ORM\Column(name="intitule", type="text")
+     * @ORM\Column(name="label", type="text")
      */
-    private $intitule;
+    private $label;
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Reponse", mappedBy="question")
@@ -46,27 +46,27 @@ class Question
     }
 
     /**
-     * Set intitule
+     * Set label
      *
-     * @param string $intitule
+     * @param string $label
      *
      * @return Question
      */
-    public function setIntitule($intitule)
+    public function setLabel($label)
     {
-        $this->intitule = $intitule;
+        $this->label = $label;
 
         return $this;
     }
 
     /**
-     * Get intitule
+     * Get label
      *
      * @return string
      */
-    public function getIntitule()
+    public function getLabel()
     {
-        return $this->intitule;
+        return $this->label;
     }
     /**
      * Constructor
