@@ -30,15 +30,17 @@ class Etablissement
     /**
      * @var string
      *
-     * @ORM\Column(name="libelle", type="string", length=64)
+     * @ORM\Column(name="label", type="string", length=64)
      */
-    private $libelle;
+    private $label;
 
     /**
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\User" , mappedBy="etablissements")
      */
     private $users;
-
+    public function __toString() {
+        return $this->label;
+    }
     /**
      * Get id
      *
@@ -50,27 +52,27 @@ class Etablissement
     }
 
     /**
-     * Set libelle
+     * Set label
      *
-     * @param string $libelle
+     * @param string $label
      *
      * @return Etablissement
      */
-    public function setLibelle($libelle)
+    public function setLabel($label)
     {
-        $this->libelle = $libelle;
+        $this->label = $label;
 
         return $this;
     }
 
     /**
-     * Get libelle
+     * Get label
      *
      * @return string
      */
-    public function getLibelle()
+    public function getLabel()
     {
-        return $this->libelle;
+        return $this->label;
     }
 
     /**
@@ -84,7 +86,6 @@ class Etablissement
     public function addUser(User $user)
     {
         $this->users[] = $user;
-        $user->addEtablissement($user);
         return $this;
     }
 

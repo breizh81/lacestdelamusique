@@ -22,11 +22,14 @@ public function load(ObjectManager $manager)
         'Histoire des arts',
         'Activités'
         ];
-
+$i=0;
     foreach ($categories as $category){
         $categorie = new Categorie();
-        $categorie->setCategorie($category);
+        $categorie->setLabel($category);
         $manager->persist($categorie);
+        $this->addReference('category' . $i, $categorie);
+
+        $i++;
     }
 
     $manager->flush();

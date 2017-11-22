@@ -10,8 +10,6 @@ title: Titre
 automaticValidation: 'Validation automatique'
 actions: Actions
 show: Voir
-edit: Editer
-delete: Supprimer
 'create a new homework': 'Créer un nouveau devoir'
 'show homeworks': 'Consulter les devoirs'
 create: Créer
@@ -20,3 +18,8 @@ create: Créer
 label: Libellé
 save: Enregistrer
 modification: Modification
+summary: Résumé
+comment: Commentaire
+'Edit sequence': 'Editer la séquence'
+Edit: 'Editer'
+

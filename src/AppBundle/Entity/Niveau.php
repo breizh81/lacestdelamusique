@@ -24,10 +24,14 @@ class Niveau
     /**
      * @var string
      *
-     * @ORM\Column(name="libelle", type="string", length=12)
+     * @ORM\Column(name="label", type="string", length=12)
      */
-    private $libelle;
+    private $label;
 
+
+    public function __toString() {
+        return $this->label;
+    }
 
     /**
      * Get id
@@ -40,27 +44,30 @@ class Niveau
     }
 
     /**
-     * Set libelle
+     * Set label
      *
-     * @param string $libelle
+     * @param string $label
      *
      * @return Niveau
      */
-    public function setLibelle($libelle)
+    public function setLabel($label)
     {
-        $this->libelle = $libelle;
+        $this->label = $label;
 
         return $this;
     }
 
     /**
-     * Get libelle
+     * Get label
      *
      * @return string
      */
-    public function getLibelle()
+    public function getLabel()
     {
-        return $this->libelle;
+        return $this->label;
     }
+
+
+
 }
 

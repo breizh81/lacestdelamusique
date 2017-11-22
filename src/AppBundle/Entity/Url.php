@@ -27,13 +27,22 @@ class Url
      * @ORM\Column(name="url", type="string", length=255)
      */
     private $url;
-
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="label", type="string", length=255)
+     */
+    private $label;
     /**
      * @var string
      *
      * @ORM\Column(name="type", type="string", length=36)
      */
     private $type;
+
+    public function __toString() {
+        return $this->url;
+    }
 
     /**
      * Get id
@@ -84,5 +93,22 @@ class Url
     {
         $this->type = $type;
     }
+
+    /**
+     * @return string
+     */
+    public function getLabel()
+    {
+        return $this->label;
+    }
+
+    /**
+     * @param string $label
+     */
+    public function setLabel($label)
+    {
+        $this->label = $label;
+    }
+
 }
 
