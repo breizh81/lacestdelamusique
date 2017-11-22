@@ -24,9 +24,9 @@ class Reponse
     /**
      * @var string
      *
-     * @ORM\Column(name="intitule", type="text")
+     * @ORM\Column(name="label", type="text")
      */
-    private $intitule;
+    private $label;
 
     /**
      * @var string
@@ -44,9 +44,9 @@ class Reponse
     /**
      * @var bool
      *
-     * @ORM\Column(name="bonne_reponse", type="boolean")
+     * @ORM\Column(name="right_answer", type="boolean")
      */
-    private $bonneReponse;
+    private $rightAnswer;
 
     /**
      * Get id
@@ -59,27 +59,27 @@ class Reponse
     }
 
     /**
-     * Set intitule
+     * Set label
      *
-     * @param string $intitule
+     * @param string $label
      *
      * @return Reponse
      */
-    public function setIntitule($intitule)
+    public function setLabel($label)
     {
-        $this->intitule = $intitule;
+        $this->label = $label;
 
         return $this;
     }
 
     /**
-     * Get intitule
+     * Get label
      *
      * @return string
      */
-    public function getIntitule()
+    public function getLabel()
     {
-        return $this->intitule;
+        return $this->label;
     }
 
     /**
@@ -133,16 +133,16 @@ class Reponse
     /**
      * @return bool
      */
-    public function isBonneReponse()
+    public function isRightAnswer()
     {
-        return $this->bonneReponse;
+        return $this->rightAnswer;
     }
 
     /**
-     * @param bool $bonneReponse
+     * @param bool $rightAnswer
      */
-    public function setBonneReponse($bonneReponse)
+    public function setRightAnswer($rightAnswer)
     {
-        $this->bonneReponse = $bonneReponse;
+        $this->rightAnswer = $rightAnswer;
     }
 }

@@ -2,10 +2,24 @@ home: Accueil
 about: 'A propos'
 login: Connexion
 logout: 'Se déconnecter'
-title: titre
-summary: Résume
-comment: commentaire
+'yes': Oui
+'no': Non
+'homework''s list': 'Liste des devoirs'
+title: Titre
+'automatic validation': 'Validation automatique'
+automaticValidation: 'Validation automatique'
+actions: Actions
+show: Voir
+'create a new homework': 'Créer un nouveau devoir'
+'show homeworks': 'Consulter les devoirs'
+create: Créer
+'back to the list': 'Retourner à la liste'
+'homework creation': 'Création d''un devoir'
+label: Libellé
+save: Enregistrer
+modification: Modification
+summary: Résumé
+comment: Commentaire
 'Edit sequence': 'Editer la séquence'
 Edit: 'Editer'
-'Back to the list': 'Retour à la liste'
-Delete: Supprimer
+

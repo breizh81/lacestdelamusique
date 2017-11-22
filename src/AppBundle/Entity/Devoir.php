@@ -24,16 +24,16 @@ class Devoir
     /**
      * @var string
      *
-     * @ORM\Column(name="libelle", type="string", length=255)
+     * @ORM\Column(name="label", type="string", length=255)
      */
-    private $libelle;
+    private $label;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="validation_automatique", type="boolean")
+     * @ORM\Column(name="automatic_validation", type="boolean")
      */
-    private $validationAutomatique;
+    private $automaticValidation;
 
 
     /**
@@ -47,51 +47,51 @@ class Devoir
     }
 
     /**
-     * Set libelle
+     * Set label
      *
-     * @param string $libelle
+     * @param string $label
      *
      * @return Devoir
      */
-    public function setLibelle($libelle)
+    public function setLabel($label)
     {
-        $this->libelle = $libelle;
+        $this->label = $label;
 
         return $this;
     }
 
     /**
-     * Get libelle
+     * Get label
      *
      * @return string
      */
-    public function getLibelle()
+    public function getLabel()
     {
-        return $this->libelle;
+        return $this->label;
     }
 
     /**
-     * Set validationAutomatique
+     * Set automaticValidation
      *
-     * @param boolean $validationAutomatique
+     * @param boolean $automaticValidation
      *
      * @return Devoir
      */
-    public function setValidationAutomatique($validationAutomatique)
+    public function setAutomaticValidation($automaticValidation)
     {
-        $this->validationAutomatique = $validationAutomatique;
+        $this->automaticValidation = $automaticValidation;
 
         return $this;
     }
 
     /**
-     * Get validationAutomatique
+     * Get automaticValidation
      *
      * @return bool
      */
-    public function getValidationAutomatique()
+    public function getAutomaticValidation()
     {
-        return $this->validationAutomatique;
+        return $this->automaticValidation;
     }
 }
 

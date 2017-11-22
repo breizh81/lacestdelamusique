@@ -5,7 +5,8 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Devoir;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Devoir controller.
@@ -24,36 +25,16 @@ class DevoirController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
+        $deleteFormArray = [];
+
         $devoirs = $em->getRepository('AppBundle:Devoir')->findAll();
+
+        foreach ($devoirs as $devoir)
+            $deleteFormArray[$devoir->getId()] = $this->createDeleteForm($devoir)->createView();
 
         return $this->render('devoir/index.html.twig', array(
             'devoirs' => $devoirs,
-        ));
-    }
-
-    /**
-     * Creates a new devoir entity.
-     *
-     * @Route("/new", name="backend_devoir_new")
-     * @Method({"GET", "POST"})
-     */
-    public function newAction(Request $request)
-    {
-        $devoir = new Devoir();
-        $form = $this->createForm('AppBundle\Form\DevoirType', $devoir);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($devoir);
-            $em->flush();
-
-            return $this->redirectToRoute('backend_devoir_show', array('id' => $devoir->getId()));
-        }
-
-        return $this->render('devoir/new.html.twig', array(
-            'devoir' => $devoir,
-            'form' => $form->createView(),
+            'deleteFormArray' => $deleteFormArray,
         ));
     }
 
@@ -74,6 +55,33 @@ class DevoirController extends Controller
     }
 
     /**
+     * Creates a new devoir entity.
+     *
+     * @Route("/new", name="backend_devoir_new")
+     * @Method({"GET", "POST"})
+     */
+    public function newAction(Request $request)
+    {
+        $devoir = new Devoir();
+        $form = $this->createForm('AppBundle\Form\DevoirType', $devoir);
+        $form->handleRequest($request);
+
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($devoir);
+            $em->flush();
+
+            return $this->redirectToRoute('backend_devoir_index');
+        }
+
+        return $this->render('devoir/new.html.twig', array(
+            'devoir' => $devoir,
+            'form' => $form->createView(),
+        ));
+    }
+
+    /**
      * Displays a form to edit an existing devoir entity.
      *
      * @Route("/{id}/edit", name="backend_devoir_edit")
@@ -88,7 +96,7 @@ class DevoirController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('backend_devoir_edit', array('id' => $devoir->getId()));
+            return $this->redirectToRoute('backend_devoir_index');
         }
 
         return $this->render('devoir/edit.html.twig', array(
