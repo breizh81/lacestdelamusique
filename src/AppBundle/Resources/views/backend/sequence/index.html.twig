@@ -1,0 +1,44 @@
+{% extends '@App/backend/base.html.twig' %}
+{% block title %}Liste des Séquences{% endblock title %}
+{% block body %}
+    <h1>Sequences list</h1>
+
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>{{'Title'|trans  }}</th>
+                <th>{{ 'Summary'|trans }}</th>
+                <th>{{ 'Comment'|trans }}</th>
+                <th>{{ 'Actions'|trans }}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for sequence in sequences %}
+            <tr>
+                <td>{{ sequence.title }}</td>
+
+                <td>{{ sequence.summary|length>100 ? sequence.summary|slice(0, 100)~ '...' : sequence.summary }}</td>
+                <td>{{ sequence.comment|length>100 ? sequence.comment|slice(0, 100)~ '...' : sequence.comment }}</td>
+                <td class="text-center">
+
+                            <a class="btn btn-info btn-xs" href="{{ path('backend_sequence_show', { 'id': sequence.id }) }}">show</a>
+
+                            <a class="btn btn-primary btn-xs" href="{{ path('backend_sequence_edit', { 'id': sequence.id }) }}">edit</a>
+                    {{ form_start(delete_forms[sequence.id]) }}
+                    <a href="#"
+                       class="btn btn-danger btn-xs" onclick="submit()">Supprimer</a>
+                    {{ form_end(delete_forms[sequence.id]) }}
+
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('backend_sequence_new') }}">Create a new sequence</a>
+        </li>
+    </ul>
+{% endblock %}

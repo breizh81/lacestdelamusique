@@ -26,9 +26,16 @@ class SequenceController extends Controller
 
         $sequences = $em->getRepository('AppBundle:Sequence')->findAll();
 
-        return $this->render('sequence/index.html.twig', array(
+        $deleteForms = [];
+
+        foreach ($sequences as $sequence)
+            $deleteForms[$sequence->getId()] = $this->createDeleteForm($sequence)->createView();
+
+
+        return $this->render('@App/backend/sequence/index.html.twig', [
             'sequences' => $sequences,
-        ));
+            'delete_forms' => $deleteForms
+        ]);
     }
 
     /**
@@ -51,7 +58,7 @@ class SequenceController extends Controller
             return $this->redirectToRoute('backend_sequence_show', array('id' => $sequence->getId()));
         }
 
-        return $this->render('sequence/new.html.twig', array(
+        return $this->render('@App/backend/sequence/new.html.twig', array(
             'sequence' => $sequence,
             'form' => $form->createView(),
         ));
@@ -67,7 +74,7 @@ class SequenceController extends Controller
     {
         $deleteForm = $this->createDeleteForm($sequence);
 
-        return $this->render('sequence/show.html.twig', array(
+        return $this->render('@App/backend/sequence/show.html.twig', array(
             'sequence' => $sequence,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -91,7 +98,7 @@ class SequenceController extends Controller
             return $this->redirectToRoute('backend_sequence_edit', array('id' => $sequence->getId()));
         }
 
-        return $this->render('sequence/edit.html.twig', array(
+        return $this->render('@App/backend/sequence/edit.html.twig', array(
             'sequence' => $sequence,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    {% block title %}
-        <title>Backend</title>
-    {% endblock %}
+
+        <title>Backend|{% block title %} {% endblock %}</title>
+
 
     {% block stylesheets %}
         <!-- Bootstrap Core CSS -->
@@ -160,7 +160,17 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="backend/pages/tables.html.twig"><i class="fa fa-table fa-fw"></i> Tables</a>
+                        <a href="#" {% if(app.request.get('_route') == 'backend_sequence_index') %} class="active" {% endif %}>
+                            <i class="fa fa-book fa-fw"></i> Séquences<span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="{{ path('backend_sequence_new') }}">Créer une séquence</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('backend_sequence_index') }}">Consulter les séquences</a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
                         <a href="backend/pages/forms.html.twig"><i class="fa fa-edit fa-fw"></i> Forms</a>
