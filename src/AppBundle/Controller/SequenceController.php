@@ -44,9 +44,11 @@ class SequenceController extends Controller
      * @Route("/new", name="backend_sequence_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, Sequence $sequence=null)
     {
-        $sequence = new Sequence();
+        $sequence ? $deleteForm = $this->createDeleteForm($sequence)->createView() : $deleteForm=null;
+
+
         $form = $this->createForm('AppBundle\Form\SequenceType', $sequence);
         $form->handleRequest($request);
 
@@ -58,10 +60,12 @@ class SequenceController extends Controller
             return $this->redirectToRoute('backend_sequence_show', array('id' => $sequence->getId()));
         }
 
-        return $this->render('@App/backend/sequence/new.html.twig', array(
+        return $this->render('@App/backend/sequence/edit.html.twig', [
             'sequence' => $sequence,
-            'form' => $form->createView(),
-        ));
+            'edit_form' => $form->createView(),
+            'delete_form' => $deleteForm,
+
+        ]);
     }
 
     /**
@@ -86,23 +90,16 @@ class SequenceController extends Controller
      * @Route("/{id}/edit", name="backend_sequence_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Sequence $sequence)
+    public function editAction(Request $request, $id)
     {
-        $deleteForm = $this->createDeleteForm($sequence);
-        $editForm = $this->createForm('AppBundle\Form\SequenceType', $sequence);
-        $editForm->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('backend_sequence_edit', array('id' => $sequence->getId()));
-        }
+        $sequence = $this->getDoctrine()->getManager()
+            ->getRepository('AppBundle:Sequence')->findOneById($id);
 
-        return $this->render('@App/backend/sequence/edit.html.twig', array(
-            'sequence' => $sequence,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
+
+        return $this->newAction($request, $sequence);
+
     }
 
     /**

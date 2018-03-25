@@ -3,9 +3,16 @@ about: 'A propos'
 login: Connexion
 logout: 'Se déconnecter'
 title: titre
-summary: Résume
+summary: Résumé
 comment: commentaire
 'Edit sequence': 'Editer la séquence'
+Create a new sequence: Créer une nouvelle sequence
 Edit: 'Editer'
 'Back to the list': 'Retour à la liste'
 Delete: Supprimer
+'show': 'Afficher'
+edit: editer
+'Summary': Résumé
+Title: Titre
+Comment: Commentaire
+Submit: Enregistrer

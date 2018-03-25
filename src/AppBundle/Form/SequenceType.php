@@ -2,7 +2,10 @@
 
 namespace AppBundle\Form;
 
+use AppBundle\Entity\Sequence;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,9 +17,16 @@ class SequenceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('title')
-            ->add('summary')
-            ->add('comment')
-            ->add('categories')
+            ->add('summary', TextareaType::class, [
+                'attr' => ['class' => 'summernote'],
+            ])
+            ->add('comment', TextareaType::class, [
+                'attr'=>['class' => 'summernote'],
+            ])
+            ->add('categories', ChoiceType::class,[
+                'placeholder' => 'Choisir une option',
+        // A ajouter les valeurs récuperé par la BDD
+            ])
             ->add('urls')
             ->add('level')
             ->add('institution');

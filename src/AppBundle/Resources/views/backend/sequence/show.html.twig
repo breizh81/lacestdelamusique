@@ -1,40 +1,39 @@
 {% extends '@App/backend/base.html.twig' %}
-
+{% block title %}
+    {{ sequence.title }}
+{% endblock %}
 {% block body %}
-    <h1>Sequence</h1>
+    <h1>{{ sequence.title }}</h1>
+    <div class="container-fluid">
+<h4>
+    {{ 'Summary' | trans }}
+</h4>
+        <blockquote>
+            <p>
+                {{ sequence.summary }}
+            </p>
+        </blockquote>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ sequence.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ sequence.title }}</td>
-            </tr>
-            <tr>
-                <th>Summary</th>
-                <td>{{ sequence.summary }}</td>
-            </tr>
-            <tr>
-                <th>Comment</th>
-                <td>{{ sequence.comment }}</td>
-            </tr>
-        </tbody>
-    </table>
+        <h4>
+            {{ 'Comment' | trans }}
+        </h4>
+        <blockquote>
+            <p>
+                {{ sequence.comment }}
+            </p>
+        </blockquote>
 
-    <ul>
-        <li>
-            <a href="{{ path('backend_sequence_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('backend_sequence_edit', { 'id': sequence.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        <a class="btn btn-info" href="{{ path('backend_sequence_index') }}">{{ 'Back to the list' | trans }}</a>
+
+        <a class="btn btn-success" href="{{ path('backend_sequence_edit', { 'id': sequence.id }) }}">{{ 'Edit' | trans }}</a>
+
+        {{ form_start(delete_form) }}
+
+        <a href="#" class="btn btn-danger" onclick="submit()">{{ 'Delete'| trans }}</a>
+        {{ form_end(delete_form) }}
+
+    </div>
+
+
+
 {% endblock %}
